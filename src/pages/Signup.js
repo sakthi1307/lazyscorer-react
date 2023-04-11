@@ -32,7 +32,7 @@ const Signup = () => {
         const data = new FormData(event.currentTarget);
         data.delete('user-tags')
         data.append('user-tags',userTags)
-        await fetch('http://localhost:5000/register', {
+        await fetch('http://127.0.0.1:5000/register', {
             method: 'POST',
             body: data,
         }).then(res => res.json().then(data => {
@@ -108,7 +108,7 @@ const Signup = () => {
                     <Grid container>
 
                         <Grid item>
-                            <Link href="/" variant="body2">
+                            <Link to="/" variant="body2">
                                 {"Don't have an account? Sign In"}
                             </Link>
                         </Grid>

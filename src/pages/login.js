@@ -1,14 +1,13 @@
-import { Box, Button, Checkbox, Container,FormControlLabel, Grid, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { userStore } from '../store';
 const Login = () => {
-  const [userData, setUserData] = useState({});
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    await fetch('http://localhost:5000/login', {
+    await fetch('http://127.0.0.1:5000/login', {
       method: 'POST',
       body: data,
     }).then(res => res.json().then(data => {
@@ -21,7 +20,10 @@ const Login = () => {
           s.userStudent = data['user-type']==='student'
         })
 
-        // window.location.href = '/';
+        window.location.href = '/';
+      }
+      if(data['error']){
+        alert(data['error'])
       }
     }))
   }

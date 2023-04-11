@@ -79,7 +79,7 @@ const SetAssignment = () => {
     data.append('questions', JSON.stringify(questions))
     const date = dateRef.current
     data.append('due_date',dayjs(date).format(format))
-    await fetch('http://localhost:5000/setassignment', {
+    await fetch('http://127.0.0.1:5000/setassignment', {
       method: 'POST',
       body: data,
       headers: new Headers({
